@@ -1,0 +1,9 @@
+[package]
+name = "nbody"
+version = "0.1.0"
+authors = ["Guillem Ramirez Miranda <guillem.ramirez@ieee.org>"]
+edition = "2018"
+
+[dependencies]
+nalgebra = "0.18"
+log = "0.4"
