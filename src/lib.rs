@@ -15,3 +15,9 @@ pub fn init(){
 
     let sim_setup = io::parse_input_file(config.input_file);
 }
+
+pub fn exit( msg: &str, code: i32) {
+
+    println!("{}", msg);
+    std::process::exit(code);
+}
