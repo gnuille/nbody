@@ -3,7 +3,7 @@ use std::string::String;
 use crate::controller::{Config, SimSetup, Timmer};
 use crate::body::{Body};
 use crate::exit;
-use na::{Vector3, Point3};
+use crate::math::vector3::Vector3;
 use itertools::Itertools;
 
 pub fn parse_args() -> Config {
@@ -32,6 +32,7 @@ pub fn parse_input_file(inp: String) -> SimSetup {
             to: 0.0,
             ts: 0.0,
             tf: 0.0,
+            tc: 0.0,
         },
     };
 
@@ -53,14 +54,15 @@ pub fn parse_input_file(inp: String) -> SimSetup {
                 ret.timmer.to = words[1].parse::<f64>().unwrap();
                 ret.timmer.ts = words[2].parse::<f64>().unwrap();
                 ret.timmer.tf = words[3].parse::<f64>().unwrap();
+                ret.timmer.tc = ret.timmer.to;
                 
             }
             ".B" => {
                 let mut b = Body {
                     m: 0.0,
-                    pos: Point3::<f64>::new(0.0, 0.0, 0.0),
-                    vel: Vector3::<f64>::new(0.0, 0.0, 0.0),
-                    acc: Vector3::<f64>::new(0.0, 0.0, 0.0),
+                    pos: Vector3::new(0.0, 0.0, 0.0),
+                    vel: Vector3::new(0.0, 0.0, 0.0),
+                    acc: Vector3::new(0.0, 0.0, 0.0),
                 };
                 let mut words_paired = Vec::new();
                 for (a,b) in (words[1..]).iter().tuples() {
